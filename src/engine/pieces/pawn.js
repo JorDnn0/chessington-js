@@ -1,4 +1,5 @@
 import Piece from './piece';
+import Square from "../square";
 
 export default class Pawn extends Piece {
     constructor(player) {
@@ -6,6 +7,7 @@ export default class Pawn extends Piece {
     }
 
     getAvailableMoves(board) {
-        return new Array(0);
+        let pos = board.findPiece(this)
+        return [new Square(pos.row+1,pos.col),new Square(pos.row-1,pos.col)];
     }
 }
