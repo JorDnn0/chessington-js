@@ -8,10 +8,8 @@ export default class Rook extends Piece {
         super(player);
     }
 
-    getAvailableMoves(board) {
-        let pos = board.findPiece(this)
+    static getAllMoves(pos,){
         let moves = []
-
         for(let i = 0; i < gameSettings.BOARD_SIZE; i++) {
             //all columns
             if(i !== pos.col) moves.push(new Square(pos.row,i))
@@ -19,7 +17,11 @@ export default class Rook extends Piece {
             //all rows
             if(i !== pos.row) moves.push(new Square(i,pos.col))
         }
-
         return moves
+    }
+
+    getAvailableMoves(board) {
+        let pos = board.findPiece(this)
+        return Rook.getAllMoves(pos)
     }
 }

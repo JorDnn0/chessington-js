@@ -1,4 +1,6 @@
 import Piece from './piece';
+import Bishop from "./bishop";
+import Rook from "./rook";
 
 export default class Queen extends Piece {
     constructor(player) {
@@ -6,6 +8,10 @@ export default class Queen extends Piece {
     }
 
     getAvailableMoves(board) {
-        return new Array(0);
+        let pos = board.findPiece(this)
+        let moves = []
+        moves.push(...Rook.getAllMoves(pos))
+        moves.push(...Bishop.getAllMoves(pos))
+        return moves
     }
 }
